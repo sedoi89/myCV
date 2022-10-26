@@ -1,8 +1,9 @@
 import * as React from 'react';
 import styled, {keyframes} from "styled-components";
 import {Link} from "react-router-dom";
-import CV from '../../assets/files/CV_Ruabchinskiy.pdf'
-
+import CV from '../../assets/files/CV_Ruabchinskiy.pdf';
+import pdf from '../../assets/img/pdf.png';
+import {useState} from "react";
 
 const animation = keyframes`
   from {
@@ -12,13 +13,16 @@ const animation = keyframes`
     opacity: 1;
   }
 `
-const StyledMainA = styled.div`
 
+const StyledMainA = styled.div`
+  position: relative;
+  
   & a {
     display: inline-flex;
     margin-top: 15px;
     text-decoration: none;
     border: 1px solid rgba( 0,0,0,0.4);
+    border-radius: 5px;
     color: black;
     padding: 10px;
     margin-right: 15px;
@@ -38,10 +42,18 @@ const StyledMainA = styled.div`
 
   & a:hover {
     border: 1px solid rgba(0, 0, 0, 0.3);
-    color: white;
-    background-color: rgba(0, 0, 0, 0.3);
+    color: black;
+    background-color: rgba(0, 0, 0, 0.03);
+    
     animation: ${animation} 0.3s cubic-bezier(0.04, 0.71, 1, 1.64);
     animation-fill-mode: forwards;
+  }
+  & img {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 150px;
+    z-index: -1;
   }
 `
 const StyledMainContainerDiv = styled.div`
@@ -72,8 +84,7 @@ const StyledAnimatedMainP = styled.p`
 
 
 const MainPage = (): JSX.Element => {
-
-
+const [classImg, setClassImg] = useState('')
     return (
         <>
             <StyledMainContainerDiv>
@@ -88,9 +99,10 @@ const MainPage = (): JSX.Element => {
                 </StyledAnimatedMainP>
 
 
-                <StyledMainA duration={0.2} delay={0.9}>
+                <StyledMainA duration={0.2} delay={0.9} >
                     <Link to={'/works'}>Work Experience</Link>
-                    <Link to={CV} target={'_blank'} download> CV </Link>
+                    <Link onClick={() => {setClassImg('animate'); setTimeout(() => {setClassImg('')}, 800)}} to={CV} target={'_blank'} download> CV </Link>
+                    <img src={pdf} alt={'pdf'} height={70} width={50} className={classImg}></img>
                 </StyledMainA>
 
 
