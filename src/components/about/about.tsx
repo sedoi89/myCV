@@ -30,7 +30,6 @@ export const StyledAboutDiv = styled.div`
   & p {
     line-height: 25px;
     font-size: 15px;
-    font-family: Cambria;
     text-align: center;
   }
 
