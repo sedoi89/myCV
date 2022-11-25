@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, {keyframes} from "styled-components";
 import {Link} from "react-router-dom";
-import CV from '../../assets/files/CV_Ruabchinskiy.pdf';
+import CV from '../../assets/files/CV_Ruabchinski.pdf';
 import pdf from '../../assets/img/pdf.png';
 import {useState} from "react";
 
